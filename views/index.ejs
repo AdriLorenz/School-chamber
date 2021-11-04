@@ -1,4 +1,14 @@
-<h1>Hi <%= name %> </h1>
+<h1>Hi </h1>
+
+<ul class="users">
+    <% for ( let user of users ) { %>
+      <li class="user">
+        <span><%= user.user_name %>
+        <span><%= user.user_email %>
+      </li>
+    <% } %>
+  </ul>
+</div>
 <form action="/logout?_method=DELETE" method="POST">
     <button type="submit">Log Out</button>
 </form>

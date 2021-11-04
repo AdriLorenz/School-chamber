@@ -14,7 +14,8 @@ exports.getUsers = async (req, res) => {
         const user = await User.findAll({
             include: [{ model: Role, required: true }]
         });
-        res.send(user);
+        console.log("llego")
+        return user;
     } catch (err) {
         console.log(err);
     }

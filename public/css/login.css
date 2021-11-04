@@ -1,0 +1,51 @@
+.login {
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 600;
+}
+
+label {
+    font-size: 25px;
+    margin-right: 300px
+}
+
+input{
+    width: 400px;
+    padding: 12px 20px;
+    margin: 15 auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100px;
+    padding: 14px 20px;
+    margin-right: 10px;
+    margin: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .buttons {
+      display:flex;
+      justify-content: center;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #9c9c9c;
+  }
+  
+  .registerButton {
+    font-weight: 600;
+    background-color: rgb(255, 255, 255);
+    color:rgb(34, 34, 34);
+  }
+
+  .loginButton {
+    font-weight: 600;
+    background-color: rgb(65, 65, 65);
+    color:rgb(255, 255, 255)
+  }

@@ -28,12 +28,27 @@ routerUser.post('/login', checkNotAuthenticated, passport.authenticate('local', 
 
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        res.redirect('/')
+        res.redirect('users/')
     }
     next();
 }
+
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login')
+}
 // Route get all users
-routerUser.get('/users', getUsers);
+routerUser.get('/users', checkAuthenticated, async (req, 
+res, next) => {
+    try {
+        let users = await getUsers();
+        res.render('../views/index.ejs', { users });
+    } catch (e) {
+        next(e);
+    }
+    });
 // Route get user by id
 routerUser.get('/users/:user_id', getUserById);
 // Route create a new user
