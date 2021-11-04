@@ -8,7 +8,7 @@ exports.getAnswers = async (req, res) => {
         const answer = await Answer.findAll({
             include:[{model: Question, required:true}]
         });
-        res.send(answer);
+        return answer;
     } catch (err) {
         console.log(err);
         

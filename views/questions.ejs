@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="css/questions.css" />
+<div class="header">
+    <p>Questions</p>
+    <p>Themes</p>
+    <p>Users</p>
+    <p>Logout</p>
+</div>
+
+<ul class="questions">
+    <% for ( let question of questions ) { %>
+        <li class="question">
+        <span><%= question.question_content %>
+        <% for ( let answer of answers ) { %>
+            <% if (answer.question_id_fk == question.question_id) { %>
+                <span><%= answer.answer_content %>
+            <% } %>
+      </li>
+      <% } %>
+    <% } %>
+</ul>

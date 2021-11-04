@@ -10,7 +10,7 @@ exports.getQuestions = async (req, res) => {
             include:[{model: User, required:true},
                 {model: Theme, required:true}]
         });
-        res.send(question);
+        return question;
     } catch (err) {
         console.log(err);
         
