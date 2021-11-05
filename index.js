@@ -25,7 +25,6 @@ const routerThemes = require("./routes/routes-themes.js");
 const routerQuestions = require("./routes/routes-questions.js");
 const routerAnswers = require("./routes/routes-answers.js");
 const User = require("./models/user.js");
-const { getUsers } = require('./controllers/users-controller');
 
 // Init express
 const app = express();

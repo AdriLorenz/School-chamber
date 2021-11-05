@@ -1,20 +1,40 @@
 <link rel="stylesheet" type="text/css" href="css/questions.css" />
-<div class="header">
-    <p>Questions</p>
-    <p>Themes</p>
-    <p>Users</p>
-    <p>Logout</p>
-</div>
+<div class="container">
+    <div class="header">
+        <div class="links">
+            <a class="link1">Questions</a>
+            <a class="link2">Themes</a>
+            <a class="link3">Users</a>
+            <a class="link4">Logout</a>
+        </div>
+    </div>
 
-<ul class="questions">
-    <% for ( let question of questions ) { %>
-        <li class="question">
-        <span><%= question.question_content %>
-        <% for ( let answer of answers ) { %>
-            <% if (answer.question_id_fk == question.question_id) { %>
-                <span><%= answer.answer_content %>
-            <% } %>
-      </li>
-      <% } %>
-    <% } %>
-</ul>
+    <div class="sort">
+        <form method="POST">
+            <a>Sort by themes</a>
+        </form> 
+    </div>
+
+    <div class="content">
+        <% for ( let question of questions ) { %>
+        <div class="card">
+            <div class="test">
+                <h4><%= question.question_content %></h4>
+                <p><%= question.question_id %></p>
+                <% for ( let answer of answers ) { %>
+                    <% if (answer.question_id_fk == question.question_id) { %>
+                        <p><%= answer.answer_content %></p>
+                    <% } %>
+                <% } %>
+                <div class="crudElements">
+                    
+                    <button id='<%= question.question_id %>' class="edit">Edit</button>
+                    <form method="POST" action="/questions/<%= question.question_id %>?_method=DELETE">
+                        <button type="submit" class="delete">Delete</button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>

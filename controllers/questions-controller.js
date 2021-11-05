@@ -2,6 +2,7 @@
 const Theme = require("../models/theme.js");
 const Question = require("../models/question.js");
 const User = require("../models/user.js");
+const Answer = require("../models/answer.js");
  
 // Get all question
 exports.getQuestions = async (req, res) => {

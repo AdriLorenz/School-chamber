@@ -1,6 +1,7 @@
 // Import express
 const express = require("express");
-const { getAnswerById, getAnswers, getAnswerByQuestion } = require("../controllers/answers-controller.js");
+const { getAnswers} = require("../controllers/answers-controller.js");
+var app = express();
 
 // Import Questions Controller
 const { createQuestion, deleteQuestion, 
@@ -23,10 +24,18 @@ async (req, res, next) => {
     }
     
 });
+routerQuestions.get('/questions/create', checkAuthenticated, 
+async (req, res) => {
+    console.log("aqui estoy bebé")
+    res.render('../views/create-question.ejs')
+    
+});
 // Route get question by id
 routerQuestions.get('/questions/:question_id', getQuestionById);
 // Route get question by theme
 routerQuestions.get('/questions/theme/:theme_id_fk', getQuestionByTheme);
+// Post page
+
 // Route create a new question
 routerQuestions.post('/questions', createQuestion);
 // Route update question by id

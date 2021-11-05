@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="/css/create.css" />
+<div class="container">
+    <div class="header">
+        <div class="links">
+            <a class="link1">Questions</a>
+            <a class="link2">Themes</a>
+            <a class="link3">Users</a>
+            <a class="link4">Logout</a>
+        </div>
+    </div>
+
+    <div class="content">
+      <form action="/questions" method="POST">
+        <input name="question_content" type="text" placeholder="question content">
+        <input name="user_id_fk" type="text" placeholder="correct answer">
+        <input type="text" placeholder="wrong answer">
+        <input type="text" placeholder="wrong answer">
+        <input name="theme_id_fk" type="text" placeholder="theme">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+</div>
