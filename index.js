@@ -64,6 +64,11 @@ initializePassport(passport, email =>
         where: {
             user_id: id
         }
+    }),
+    role => User.findOne({
+        where: {
+            role_id_fk: role
+        }
     })
 )
 
@@ -71,21 +76,6 @@ app.delete('/logout', (req, res) => {
     req.logOut();
     res.redirect('/login')
 })
-
-
-//app.get('/users', checkAuthenticated, (req, res) => {
-//    res.render('index.ejs', { users })
-//    res.render('index.ejs', { name: req.user.then((user) => {
-//        console.log(user.user_name)
-//    }) })
-//})
-
-function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/login')
-}
 
 // Testing database connection 
 async (req, res) => {

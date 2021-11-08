@@ -18,9 +18,6 @@ const { DataTypes }  = Sequelize;
     question_content: {
       type: DataTypes.STRING
     },
-    user_id_fk: {
-      type: DataTypes.INTEGER
-    },
     theme_id_fk: {
       type: DataTypes.INTEGER
     }
@@ -30,11 +27,7 @@ const { DataTypes }  = Sequelize;
     freezeTableName: true
   });
 
-  // Specify the relationships
-  Question.belongsTo(User, {
-    foreignKey: 'user_id_fk'
-  });
-
+  // Specify the relationship
   Question.belongsTo(Theme, {
     foreignKey: 'theme_id_fk'
   });

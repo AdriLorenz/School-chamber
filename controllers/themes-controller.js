@@ -5,7 +5,7 @@ const Theme = require("../models/theme.js");
 exports.getThemes = async (req, res) => {
     try {
         const theme = await Theme.findAll();
-        res.send(theme);
+        return theme;
     } catch (err) {
         console.log(err);
     }

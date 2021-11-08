@@ -8,8 +8,7 @@ const Answer = require("../models/answer.js");
 exports.getQuestions = async (req, res) => {
     try {
         const question = await Question.findAll({
-            include:[{model: User, required:true},
-                {model: Theme, required:true}]
+            include:[{model: Theme, required:true}]
         });
         return question;
     } catch (err) {
@@ -25,8 +24,7 @@ exports.getQuestionById = async (req, res) => {
             where: {
                 question_id: req.params.question_id
             }, 
-            include:[{model: User, required:true},
-                {model: Theme, required:true}]
+            include:[{model: Theme, required:true}]
         });
         res.send(question[0]);
     } catch (err) {
@@ -40,8 +38,7 @@ exports.getQuestionByTheme = async(req, res) => {
             where: {
                 theme_id_fk: req.params.theme_id_fk
             },
-            include:[{model: User, required:true},
-                {model: Theme, required:true}]
+            include:[{model: Theme, required:true}]
         });
         res.send(question);
     } catch (err) {

@@ -1,7 +1,10 @@
 // Import express
 const express = require("express");
-const { getAnswers} = require("../controllers/answers-controller.js");
+const { getAnswers } = require("../controllers/answers-controller.js");
+const { getThemes } = require("../controllers/themes-controller.js");
 var app = express();
+const {authUser, authRole, checkNotAuthenticated, 
+    checkAuthenticated} = require('../controllers/auth')
 
 // Import Questions Controller
 const { createQuestion, deleteQuestion, 
@@ -14,22 +17,32 @@ const routerQuestions = express.Router();
  
 // Route get all questions
 routerQuestions.get('/questions', checkAuthenticated, 
-async (req, res, next) => {
+authRole(2), async (req, res, next) => {
     try {
         let answers = await getAnswers();
         let questions = await getQuestions();
-        res.render('../views/questions.ejs', { answers, questions })
+        let themes = await getThemes();
+        res.render('../views/questions.ejs', { answers, questions, themes })
     } catch (error) {
         next(error);
     }
     
 });
 routerQuestions.get('/questions/create', checkAuthenticated, 
-async (req, res) => {
-    console.log("aqui estoy bebé")
+authRole(2), async (req, res) => {
     res.render('../views/create-question.ejs')
     
 });
+
+routerQuestions.get('/questions/edit', checkAuthenticated,
+async (req, res) => {
+    res.render('../views/edit-question.ejs')
+});
+
+routerQuestions.delete('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/login')
+})
 // Route get question by id
 routerQuestions.get('/questions/:question_id', getQuestionById);
 // Route get question by theme
@@ -42,13 +55,6 @@ routerQuestions.post('/questions', createQuestion);
 routerQuestions.put('/questions/:question_id', updateQuestion);
 // Route delete question by id
 routerQuestions.delete('/questions/:question_id', deleteQuestion);
-
-function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/login')
-}
  
 // export router
 module.exports = routerQuestions;

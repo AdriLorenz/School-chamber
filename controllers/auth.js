@@ -1,4 +1,4 @@
-export function authUser(req, res, next) {
+function authUser(req, res, next) {
     if (req.user == null) {
         console.log(req.user)
         res.status(403)
@@ -7,12 +7,35 @@ export function authUser(req, res, next) {
     next()
 };
 
-export function authRole(role) {
+function authRole(role) {
     return (req, res, next) => {
-        if (req.user.role !== role) {
+        if (req.user.role_id_fk !== role) {
+            console.log("USER ROL: " + req.user.role_id_fk)
             res.status(401)
-            return res.send('Not allowed')
+            return res.send('You are not allowed')
         }
+        console.log("USER ROL: " + req.user.role_id_fk)
         next();
     }
+}
+
+function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        res.redirect('users/')
+    }
+    next();
+}
+
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login')
+}
+
+module.exports = {
+    authUser,
+    authRole,
+    checkNotAuthenticated,
+    checkAuthenticated
 }

@@ -1,29 +1,32 @@
 html {
   font-size: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+:root {
+  --black: #353535;
+}
+
+body {
+  font-weight: bold;
+  font-family: Arial;
+  font-weight:bolder;
 }
 
 .container {
   display: grid;
-  grid-template-areas:
-  'header header header header header header'
-  'content content content content content content'
-  'content content content content content content';
-  grid-gap: 40px;
+  grid-template-columns:1;
+  grid-template-rows: 2;
 }
-
 .header {
   background-color: rgb(49, 49, 49);
   color:rgb(250, 250, 250);
-  grid-area: header;
+  grid-area: 1 / 1 / 1 / 1;
   height: 100px;
   
 }
 
-.sort {
-  grid-area: sort;
-  margin-top: 20px;
-
-}
 
 .links {
   display: grid;
@@ -38,6 +41,10 @@ html {
   font-weight: 600;
 }
 
+a {
+  cursor: pointer;
+}
+
 .item1{
   grid-area: item1;
 }
@@ -47,19 +54,99 @@ html {
 .item3{
   grid-area: item3;
 }
-.item4{
+.logout{
   grid-area: item4;
+  border:none;
+  background: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 25px;
+  cursor:pointer;
 }
-
 .content {
-  grid-area: content;
+  margin: 20px;
+}
+.content > form {
+  grid-area: 2 / 1 / 2 / 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px auto;
+  grid-gap: 40px;
+  width: 100%;
+}
+.content > form  > * > label{
+  color: var(--black);
+  margin-bottom: 5px;
 }
 
+.content > form  > * > input
+{
+  border: 1px solid #707070;
+  padding: 10px;
+  border-radius: 0;
+  text-indent: 5px;
+}
 
+.content > form  > * > input:focus {
+  outline: none;
+}
 
+.content > form > * {
+  display: flex;
+  flex-direction: column;
+}
 
+.questionContent {
+  grid-row: 1; 
+  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: column;
+}
 
+.correctAnswer {
+  grid-row: 2; 
+  grid-column: 1 ;
+
+}
+.wrongAnswer1 {
+  grid-row: 2; 
+  grid-column: 2 ;
+}
+.wrongAnswer2 {
+  grid-row: 2; 
+  grid-column: 3 ;
+}
+.theme {
+  grid-row: 3; 
+  grid-column: 1 ;
+}
+
+.buttonSubmit {
+  grid-row: 4;
+  grid-column: 3;
+  padding: 12px;
+  border: none;
+  background-color: rgb(34, 34, 34);
+  color: white;
+  font-size: 80%;
+  font-weight: bold;
+  border-radius: 20px;
+  transition:all .3s;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.267);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width:70%;
+  margin-left: 30px;
+}
+
+.buttonSubmit:hover {
+  transform: translateY(-1px);
+  background-color: rgba(34, 34, 34, 0.856);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.623);
+}
 

@@ -14,7 +14,6 @@ exports.getUsers = async (req, res) => {
         const user = await User.findAll({
             include: [{ model: Role, required: true }]
         });
-        console.log("llego")
         return user;
     } catch (err) {
         console.log(err);
@@ -42,13 +41,38 @@ exports.getUserById = async (req, res) => {
 exports.createUser = async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 3);
-        User.create({
-            user_name: req.body.name,
-            user_email: req.body.email,
-            user_password: hashedPassword,
-            role_id_fk: 1
-        });
-        res.redirect('/login')
+        const getUserByEmail = async (req, res) => {
+            try {
+                const user = await User.findAll({
+                    where: {
+                        user_email: req.body.email
+                    },
+        
+                    include: [{ model: Role, required: true }]
+        
+                });
+                return user[0].dataValues.user_email;
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        const email = await getUserByEmail(req, res);
+        console.log(email);
+        if (req.body.email === email) {
+            req.flash('error', 'The email already exists');
+            res.render('../views/register.ejs');
+        } else if (req.body.repeatPassword !== req.body.password) {
+            req.flash('error', 'The passwords do not match');
+            res.render('../views/register.ejs');
+        } else {
+            User.create({
+                user_name: req.body.name,
+                user_email: req.body.email,
+                user_password: hashedPassword,
+                role_id_fk: 1
+            });
+            res.redirect('/login')
+        }
     } catch (res) {
         console.log(res);
         res.redirect('/register')

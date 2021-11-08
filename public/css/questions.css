@@ -22,8 +22,11 @@ html {
 .sort {
     grid-area: sort;
     margin-top: 20px;
-
 }
+
+.sort > form {
+    margin-top: 20px;
+    }
 
 .links {
     display: grid;
@@ -38,17 +41,39 @@ html {
     font-weight: 600;
 }
 
-.item1{
+a {
+    cursor: pointer;
+}
+
+a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:visited {
+    color:none;
+}
+
+.link1{
     grid-area: item1;
 }
-.item2{
+.link2{
     grid-area: item2;
 }
-.item3{
+.link3{
     grid-area: item3;
 }
-.item4{
+.logout{
     grid-area: item4;
+    border:none;
+    background: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 25px;
+    cursor:pointer;
 }
 
 .content {

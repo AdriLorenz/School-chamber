@@ -1,6 +1,8 @@
 // Import express
 const express = require("express");
 const passport = require('passport');
+const {authUser, authRole, checkNotAuthenticated, 
+    checkAuthenticated} = require('../controllers/auth')
 
 
 // Import User Controller
@@ -12,7 +14,6 @@ const { createUser, deleteUser, getUserById,
 const routerUser = express.Router();
 
 routerUser.get('/register', checkNotAuthenticated, (req, res) => {
-    console.log(req.sessionID)
     res.render('register.ejs')
  }) 
 
@@ -26,21 +27,10 @@ routerUser.post('/login', checkNotAuthenticated, passport.authenticate('local', 
      failureFlash: true
  }))
 
-function checkNotAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        res.redirect('users/')
-    }
-    next();
-}
 
-function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/login')
-}
 // Route get all users
-routerUser.get('/users', checkAuthenticated, async (req, 
+routerUser.get('/users', checkAuthenticated,
+authRole(2), async (req, 
 res, next) => {
     try {
         let users = await getUsers();

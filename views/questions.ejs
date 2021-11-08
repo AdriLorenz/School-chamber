@@ -2,39 +2,49 @@
 <div class="container">
     <div class="header">
         <div class="links">
-            <a class="link1">Questions</a>
+            <a href="/questions" class="link1">Questions</a>
             <a class="link2">Themes</a>
             <a class="link3">Users</a>
-            <a class="link4">Logout</a>
+            <form action="/logout?_method=DELETE" method="POST">
+                <button class="logout" type="submit">Log Out</button>
+            </form>
+            
         </div>
     </div>
 
     <div class="sort">
-        <form method="POST">
-            <a>Sort by themes</a>
+        <a>Sort by themes:</a>
+         <br>
+        <form class="checkboxes" method="POST">
+            <% for ( let theme of themes ) { %>
+            <input type="checkbox" id='<%= theme.theme_name %>' name='<%= theme.theme_name %>' value='<%= theme.theme_name %>'>
+            <label for='<%= theme.theme_name %>'><%= theme.theme_name %></label><br>
+            <% } %>
         </form> 
     </div>
 
     <div class="content">
         <% for ( let question of questions ) { %>
-        <div class="card">
-            <div class="test">
-                <h4><%= question.question_content %></h4>
-                <p><%= question.question_id %></p>
-                <% for ( let answer of answers ) { %>
-                    <% if (answer.question_id_fk == question.question_id) { %>
-                        <p><%= answer.answer_content %></p>
+            <% var i=0; %>
+            <div class="card">
+                <div class="test">
+                    <h4><%= question.question_content %></h4>
+                    <% for ( let answer of answers ) { %>
+                        <% if (answer.question_id_fk == question.question_id) { %>
+                            <% i++ %>
+                            <p><%= i %> - <%= answer.answer_content %></p>
+                        <% } %>
                     <% } %>
-                <% } %>
-                <div class="crudElements">
-                    
-                    <button id='<%= question.question_id %>' class="edit">Edit</button>
-                    <form method="POST" action="/questions/<%= question.question_id %>?_method=DELETE">
-                        <button type="submit" class="delete">Delete</button>
-                    </form> 
+                    <div class="crudElements">
+                        <form>
+                            <button id='<%= question.question_id %>' class="edit">Edit</button>
+                        </form>
+                        <form method="POST" action="/questions/<%= question.question_id %>?_method=DELETE">
+                            <button type="submit" class="delete">Delete</button>
+                        </form> 
+                    </div>
                 </div>
             </div>
-        </div>
-        <% } %>
+            <% } %>
     </div>
 </div>
