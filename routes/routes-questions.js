@@ -9,7 +9,7 @@ const {authUser, authRole, checkNotAuthenticated,
 // Import Questions Controller
 const { createQuestion, deleteQuestion, 
     getQuestionById, getQuestionByTheme, 
-    getQuestions, updateQuestion } = require
+    getQuestions, updateQuestion, createQuestionAndAnswers } = require
     ("../controllers/questions-controller.js");
 
  // Init express router
@@ -22,21 +22,27 @@ authRole(2), async (req, res, next) => {
         let answers = await getAnswers();
         let questions = await getQuestions();
         let themes = await getThemes();
-        res.render('../views/questions.ejs', { answers, questions, themes })
+        let sortBy = await getQuestionByTheme();
+        res.render('../views/questions.ejs', { answers, questions, themes,
+        isChecked: sortBy })
     } catch (error) {
         next(error);
     }
     
 });
+
 routerQuestions.get('/questions/create', checkAuthenticated, 
 authRole(2), async (req, res) => {
-    res.render('../views/create-question.ejs')
+    let themes = await getThemes();
+    res.render('../views/create-question.ejs', {themes})
     
 });
 
-routerQuestions.get('/questions/edit', checkAuthenticated,
+routerQuestions.get('/questions/edit/:question_id', checkAuthenticated,
 async (req, res) => {
-    res.render('../views/edit-question.ejs')
+    const question = req.params.question_id
+    let themes = await getThemes();
+    res.render('../views/edit-question.ejs', {question_id: question, themes})
 });
 
 routerQuestions.delete('/logout', (req, res) => {
@@ -50,9 +56,9 @@ routerQuestions.get('/questions/theme/:theme_id_fk', getQuestionByTheme);
 // Post page
 
 // Route create a new question
-routerQuestions.post('/questions', createQuestion);
+routerQuestions.post('/questions', createQuestionAndAnswers);
 // Route update question by id
-routerQuestions.put('/questions/:question_id', updateQuestion);
+routerQuestions.put('/questions/edit/:question_id', updateQuestion);
 // Route delete question by id
 routerQuestions.delete('/questions/:question_id', deleteQuestion);
  

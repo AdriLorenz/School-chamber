@@ -33,6 +33,7 @@ exports.getQuestionById = async (req, res) => {
 }
 
 exports.getQuestionByTheme = async(req, res) => {
+
     try {
         const question = await Question.findAll({
             where: {
@@ -58,6 +59,55 @@ exports.createQuestion = async (req, res) => {
         console.log(err);
     }
 }
+
+exports.getQuestions = async (req, res) => {
+    try {
+        const question = await Question.findAll({
+            include:[{model: Theme, required:true}]
+        });
+        return question;
+    } catch (err) {
+        console.log(err);
+        
+    }
+}
+
+exports.createQuestionAndAnswers = async (req, res) => {
+    try {
+        await Question.create(req.body);
+        const getLastQuestionId = async () => {
+            try {
+                const question = await Question.findAll();
+                return question[question.length-1].dataValues.question_id;
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        const id = await getLastQuestionId();
+        console.log("The last question ID is: " + id)
+        await Answer.create({
+            answer_content: req.body.correctAnswer,
+            answer_points: 10,
+            question_id_fk: id
+        });
+        await Answer.create({
+            answer_content: req.body.wrongAnswer1,
+            answer_points: 0,
+            question_id_fk: id
+        });
+
+        if (req.body.wrongAnswer2 !== "") {
+            await Answer.create({
+                answer_content: req.body.wrongAnswer2,
+                answer_points: 0,
+                question_id_fk: id
+            });
+        } 
+        res.redirect('/questions');
+    } catch (err) {
+        console.log(err);
+    }
+}
  
 // Update question by id
 exports.updateQuestion = async (req, res) => {
@@ -67,9 +117,51 @@ exports.updateQuestion = async (req, res) => {
                 question_id: req.params.question_id
             }
         });
-        res.json({
-            "message": "Question Updated"
+
+        //
+        const getAnswerId = async () => {
+            try {
+                const answer = await Answer.findAll({
+                    where: {
+                        answer_points: 0,
+                        question_id_fk: req.params.question_id
+                }});
+                return answer[1].dataValues.answer_id;
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        const answerId = await getAnswerId();
+        console.log("The last question ID is: " + answerId)
+
+        await Answer.update({
+            answer_content: req.body.correctAnswer,
+            answer_points: 10,
+        }, {
+            where: {
+                question_id_fk: req.params.question_id,
+                answer_points: 10
+            }
         });
+        await Answer.update({
+            answer_content: req.body.wrongAnswer1
+        }, {
+            where: {
+                answer_id: answerId - 1,
+                question_id_fk: req.params.question_id,
+                answer_points: 0
+            }
+        });
+        await Answer.update({
+            answer_content: req.body.wrongAnswer2
+        }, {
+            where: {
+                answer_id: answerId,
+                question_id_fk: req.params.question_id,
+                answer_points: 0
+            }
+        });
+        res.redirect('/questions');
     } catch (err) {
         console.log(err);
     }
@@ -83,9 +175,7 @@ exports.deleteQuestion = async (req, res) => {
                 question_id: req.params.question_id
             }
         });
-        res.json({
-            "message": "Question Deleted"
-        });
+        res.redirect('/questions');
     } catch (err) {
         console.log(err);
     }

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="header">
     <div class="links">
-      <a class="link1">Questions</a>
+      <a href="/questions" class="link1">Questions</a>
       <a class="link2">Themes</a>
       <a class="link3">Users</a>
       <form action="/logout?_method=DELETE" method="POST">
@@ -20,22 +20,26 @@
 
       <div class="correctAnswer">
         <label name="correctAnswer">Correct Answer</label>
-        <input type="text" autocomplete="off">
+        <input name="correctAnswer" type="text" autocomplete="off">
       </div>
 
       <div class="wrongAnswer1">
         <label name="wrongAnswer1">Wrong Answer 1</label>
-        <input type="text" autocomplete="off">
+        <input name="wrongAnswer1" type="text" autocomplete="off">
       </div>
 
       <div class="wrongAnswer2">
         <label name="wrongAnswer2">Wrong Answer 2</label>
-        <input type="text" autocomplete="off">
+        <input name="wrongAnswer2" type="text" autocomplete="off">
       </div>
 
       <div class="theme">
-        <label name="theme_id_fk">Theme ID</label>
-        <input name="theme_id_fk" type="text" autocomplete="off">
+        <label name="theme_id_fk">Theme</label>
+        <select name="theme_id_fk" id="theme_id_fk">
+          <% for ( let theme of themes ) { %>
+          <option value="<%=theme.theme_id %>"><%=theme.theme_name %></option>
+          <% } %>
+        </select>
       </div>
 
       <button class="buttonSubmit" type="submit">Create question</button>

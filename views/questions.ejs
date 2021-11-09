@@ -15,12 +15,17 @@
     <div class="sort">
         <a>Sort by themes:</a>
          <br>
-        <form class="checkboxes" method="POST">
+        <form class="checkboxes" method="GET">
             <% for ( let theme of themes ) { %>
-            <input type="checkbox" id='<%= theme.theme_name %>' name='<%= theme.theme_name %>' value='<%= theme.theme_name %>'>
+            <input type="radio" id='<%= theme.theme_name %>' name='checkboxes'
+            onClick= <% isChecked %> value='<%= theme.theme_id %>' >
             <label for='<%= theme.theme_name %>'><%= theme.theme_name %></label><br>
             <% } %>
-        </form> 
+        </form>
+        <form action="questions/create">
+            <button class="buttonSubmit" type="submit">Create question</button>
+        </form>
+        
     </div>
 
     <div class="content">
@@ -36,7 +41,7 @@
                         <% } %>
                     <% } %>
                     <div class="crudElements">
-                        <form>
+                        <form method="GET" action="/questions/edit/<%=question.question_id%>">
                             <button id='<%= question.question_id %>' class="edit">Edit</button>
                         </form>
                         <form method="POST" action="/questions/<%= question.question_id %>?_method=DELETE">
@@ -48,3 +53,4 @@
             <% } %>
     </div>
 </div>
+

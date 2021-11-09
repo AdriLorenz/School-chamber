@@ -45,6 +45,16 @@ a {
   cursor: pointer;
 }
 
+a:-webkit-any-link {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:visited {
+  color:none;
+}
+
 .item1{
   grid-area: item1;
 }
