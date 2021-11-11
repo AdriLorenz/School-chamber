@@ -24,6 +24,9 @@ const routerUsers = require("./routes/routes-users.js");
 const routerThemes = require("./routes/routes-themes.js");
 const routerQuestions = require("./routes/routes-questions.js");
 const routerAnswers = require("./routes/routes-answers.js");
+const routerTopics = require("./routes/routes-topics.js");
+const routerClassrooms = require("./routes/routes-classrooms.js");
+const routerRoles = require("./routes/routes-roles.js");
 const User = require("./models/user.js");
 
 // Init express
@@ -92,6 +95,9 @@ app.use(routerUsers);
 app.use(routerThemes);
 app.use(routerQuestions);
 app.use(routerAnswers);
+app.use(routerTopics);
+app.use(routerClassrooms);
+app.use(routerRoles);
 
 // listen on port
 app.listen(5000, () => console.log('Server running at http://localhost:5000'));

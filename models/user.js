@@ -4,6 +4,8 @@ const Sequelize = require("sequelize");
 // import connection 
 const db = require("../config/database.js");
 
+const Classroom = require("./classroom.js")
+
 const Role = require("./role.js");
  
 // init DataTypes
@@ -25,6 +27,17 @@ const User = db.define('users', {
   user_password: {
     type: DataTypes.STRING
   },
+  user_score: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  },
+  user_games_played: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  },
+  classroom_id_fk: {
+    type: DataTypes.INTEGER
+  },
   role_id_fk: {
     type: DataTypes.INTEGER
   }
@@ -37,6 +50,9 @@ const User = db.define('users', {
 // Specify the relationship
 User.belongsTo(Role, {
   foreignKey: 'role_id_fk'
+});
+User.belongsTo(Classroom, {
+  foreignKey: 'classroom_id_fk'
 });
 
 // Export model User

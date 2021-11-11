@@ -3,22 +3,22 @@ const Sequelize = require("sequelize");
 
 // import connection 
 const db = require("../config/database.js");
-const User = require("./user.js");
-const Topic = require("./topic.js");
+
+const Theme = require("./theme.js");
 
 // init DataTypes
 const { DataTypes }  = Sequelize;
 // Define schema
-  const Question = db.define('questions', {
+  const Topic = db.define('topics', {
     // Define attributes
-    question_id: {
+    topic_id: {
       type: DataTypes.INTEGER,
       primaryKey: true
     },
-    question_content: {
+    topic_name: {
       type: DataTypes.STRING
     },
-    topic_id_fk: {
+    theme_id_fk: {
       type: DataTypes.INTEGER
     }
   }, {
@@ -28,8 +28,8 @@ const { DataTypes }  = Sequelize;
   });
 
   // Specify the relationship
-  Question.belongsTo(Topic, {
-    foreignKey: 'topic_id_fk'
+  Topic.belongsTo(Theme, {
+    foreignKey: 'theme_id_fk'
   });
 
-module.exports = Question;
+module.exports = Topic;

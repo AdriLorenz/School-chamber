@@ -1,5 +1,6 @@
 // Import Question Model
 const Theme = require("../models/theme.js");
+const Topic = require("../models/topic.js");
 const Question = require("../models/question.js");
 const User = require("../models/user.js");
 const Answer = require("../models/answer.js");
@@ -8,8 +9,9 @@ const Answer = require("../models/answer.js");
 exports.getQuestions = async (req, res) => {
     try {
         const question = await Question.findAll({
-            include:[{model: Theme, required:true}]
+            include:[{model: Topic, required:true}]
         });
+        console.log(question)
         return question;
     } catch (err) {
         console.log(err);
@@ -41,7 +43,8 @@ exports.getQuestionByTheme = async(req, res) => {
             },
             include:[{model: Theme, required:true}]
         });
-        res.send(question);
+        console.log("itérame esta "+question)
+        return question;
     } catch (err) {
         console.log(err);
     }
@@ -57,18 +60,6 @@ exports.createQuestion = async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-    }
-}
-
-exports.getQuestions = async (req, res) => {
-    try {
-        const question = await Question.findAll({
-            include:[{model: Theme, required:true}]
-        });
-        return question;
-    } catch (err) {
-        console.log(err);
-        
     }
 }
 

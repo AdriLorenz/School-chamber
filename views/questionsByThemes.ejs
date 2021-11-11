@@ -16,12 +16,13 @@
         <a>Sort by themes:</a>
          <br>
          <% for ( let theme of themes ) { %>
-        <form action="/questions/theme/<%=theme.theme_id%>" method="GET">
-            <input type="radio" id='<%= theme.theme_name %>'
-            value='<%= theme.theme_id %>' name="checkboxes" >
+        <form class="checkboxes" action="/questions/theme/<%=theme.theme_id%>" method="GET">
+            
+            <input type="radio" id='<%= theme.theme_name %>' name='checkboxes'
+            value='<%= theme.theme_id %>' >
             <label for='<%= theme.theme_name %>'><%= theme.theme_name %></label><br>
             <% } %>
-            <!-- <button class="buttoncito" type="submit">Filter</button> -->
+
         </form>
         <form action="questions/create">
             <button class="buttonSubmit" type="submit">Create question</button>
@@ -30,22 +31,22 @@
     </div>
 
     <div class="content">
-        <% for ( let question of questions ) { %>
+        <% for ( let questionByTheme of questionsByThemes ) { %>
             <% var i=0; %>
             <div class="card">
                 <div class="test">
-                    <h4><%= question.question_content %></h4>
+                    <h4><%= questionByTheme.question_content %></h4>
                     <% for ( let answer of answers ) { %>
-                        <% if (answer.question_id_fk == question.question_id) { %>
+                        <% if (answer.question_id_fk == questionByTheme.question_id) { %>
                             <% i++ %>
                             <p><%= i %> - <%= answer.answer_content %></p>
                         <% } %>
                     <% } %>
                     <div class="crudElements">
-                        <form method="GET" action="/questions/edit/<%=question.question_id%>">
-                            <button id='<%= question.question_id %>' class="edit">Edit</button>
+                        <form method="GET" action="/questions/edit/<%=questionByTheme.question_id%>">
+                            <button id='<%= questionByTheme.question_id %>' class="edit">Edit</button>
                         </form>
-                        <form method="POST" action="/questions/<%= question.question_id %>?_method=DELETE">
+                        <form method="POST" action="/questions/<%= questionByTheme.question_id %>?_method=DELETE">
                             <button type="submit" class="delete">Delete</button>
                         </form> 
                     </div>
@@ -54,4 +55,3 @@
             <% } %>
     </div>
 </div>
-

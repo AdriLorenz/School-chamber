@@ -42,6 +42,15 @@
         </select>
       </div>
 
+      <div class="topic">
+        <label name="topic_id_fk">Topic</label>
+        <select name="topic_id_fk" id="topic_id_fk">
+          <% for ( let topic of topics ) { %>
+          <option value="<%=topic.topic_id %>"><%=topic.topic_name %></option>
+          <% } %>
+        </select>
+      </div>
+
       <button class="buttonSubmit" type="submit">Create question</button>
     </form>
   </div>

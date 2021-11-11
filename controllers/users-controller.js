@@ -69,7 +69,8 @@ exports.createUser = async (req, res) => {
                 user_name: req.body.name,
                 user_email: req.body.email,
                 user_password: hashedPassword,
-                role_id_fk: 1
+                role_id_fk: 1,
+                classroom_id_fk: 1
             });
             res.redirect('/login')
         }
