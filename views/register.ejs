@@ -21,6 +21,26 @@
         name="repeatPassword" 
         placeholder="Repeat password.." required>
 
+        <div class="selects">
+          <div class="roles">
+            <label for="role_id_fk">Role</label>
+            <select name="role_id_fk" id="role_id_fk">
+              <% for ( let role of roles ) { %>
+              <option value="<%=role.role_id %>"><%=role.role_name %></option>
+              <% } %>
+            </select>
+          </div>
+
+          <div class="roles">
+            <label for="classroom_id_fk">Classroom</label>
+            <select name="classroom_id_fk" id="classroom_id_fk">
+              <% for ( let classroom of classrooms ) { %>
+              <option value="<%=classroom.classroom_id %>"><%=classroom.classroom_name %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+
         <% if (messages.error) { %>
             <%= messages.error %>
             <% } %>

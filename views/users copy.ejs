@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="css/questions.css" />
+<div class="container">
+    <div class="header">
+        <div class="links">
+            <a href="/questions" class="link1">Questions</a>
+            <a class="link2">Themes</a>
+            <a class="link3">Users</a>
+            <form action="/logout?_method=DELETE" method="POST">
+                <button class="logout" type="submit">Log Out</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <div class="sort">
+        <a>Sort by Classrooms:</a>
+         <br>
+         <% for ( let classroom of classrooms ) { %>
+        <form action="/questions/theme/<%=classroom.classroom_id%>" method="GET">
+            <input type="radio" id='<%= classroom.classroom_name %>'
+            value='<%= classroom.classroom_id %>' name="checkboxes" >
+            <label for='<%= classroom.classroom_name %>'><%= classroom.classroom_name %></label><br>
+            <% } %>
+            <!-- <button class="buttoncito" type="submit">Filter</button> -->
+        </form>
+        <form action="/register">
+            <button class="buttonSubmit" type="submit">Register user</button>
+        </form>
+    </div>
+
+    <div class="content">
+        <% for ( let user of users ) { %>
+            <div class="card">
+                <div class="test">
+                    <h4><%= user.user_name %></h4>
+                    <p><%= user.user_email %></p>
+                    <% for ( let classroom of classrooms ) { %>
+                        <% if (user.classroom_id_fk == classroom.classroom_id) { %>
+                            <p><%= classroom.classroom_name %></p>
+                        <% } %>
+                    <% } %>
+                    <% for ( let role of roles ) { %>
+                        <% if (user.role_id_fk == role.role_id) { %>
+                            <p>Rol: <%= role.role_name %></p>
+                        <% } %>
+                    <% } %>
+                    <div class="crudElements">
+                        <form method="GET" action="/users/edit/<%=user.user_id%>">
+                            <button id='<%= user.user_id %>' class="edit">Edit</button>
+                        </form>
+                        <form method="POST" action="/users/<%= user.user_id %>?_method=DELETE">
+                            <button type="submit" class="delete">Delete</button>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>

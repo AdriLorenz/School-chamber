@@ -9,19 +9,22 @@ const {authUser, authRole, checkNotAuthenticated,
 // Import Questions Controller
 const { createQuestion, deleteQuestion, 
     getQuestionById, getQuestionByTheme, 
-    getQuestions, updateQuestion, createQuestionAndAnswers } = require
+    getQuestions, returnQuestions,
+     updateQuestion, createQuestionAndAnswers } = require
     ("../controllers/questions-controller.js");
 const { returnTopics } = require("../controllers/topics-controller.js");
 
  // Init express router
 const routerQuestions = express.Router();
+
+routerQuestions.get('/questions/unity', getQuestions);
  
 // Route get all questions
 routerQuestions.get('/questions', checkAuthenticated, 
 authRole(2), async (req, res, next) => {
     try {
         let answers = await getAnswers();
-        let questions = await getQuestions();
+        let questions = await returnQuestions();
         let themes = await returnThemes();
         res.render('../views/questions.ejs', { answers, questions, themes })
     } catch (error) {

@@ -11,6 +11,18 @@ exports.getQuestions = async (req, res) => {
         const question = await Question.findAll({
             include:[{model: Topic, required:true}]
         });
+        res.send(question);
+    } catch (err) {
+        console.log(err);
+        
+    }
+}
+
+exports.returnQuestions = async (req, res) => {
+    try {
+        const question = await Question.findAll({
+            include:[{model: Topic, required:true}]
+        });
         console.log(question)
         return question;
     } catch (err) {

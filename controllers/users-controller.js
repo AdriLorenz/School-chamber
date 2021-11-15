@@ -14,6 +14,17 @@ exports.getUsers = async (req, res) => {
         const user = await User.findAll({
             include: [{ model: Role, required: true }]
         });
+        res.send(user);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+exports.returnUsers = async (req, res) => {
+    try {
+        const user = await User.findAll({
+            include: [{ model: Role, required: true }]
+        });
         return user;
     } catch (err) {
         console.log(err);
@@ -69,10 +80,10 @@ exports.createUser = async (req, res) => {
                 user_name: req.body.name,
                 user_email: req.body.email,
                 user_password: hashedPassword,
-                role_id_fk: 1,
-                classroom_id_fk: 1
+                role_id_fk: req.body.role_id_fk,
+                classroom_id_fk: req.body.classroom_id_fk
             });
-            res.redirect('/login')
+            res.redirect('/users')
         }
     } catch (res) {
         console.log(res);

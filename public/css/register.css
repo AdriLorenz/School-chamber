@@ -32,6 +32,7 @@ input{
   .buttons {
       display:flex;
       justify-content: center;
+      margin-top: 40px;
   }
   
   input[type=submit]:hover {
@@ -43,3 +44,27 @@ input{
     background-color: rgb(65, 65, 65);
     color:rgb(255, 255, 255)
   }
+
+  .selects {
+    margin-top: 20px;
+    display:inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 150px;
+    margin-right: 200px;
+  }
+
+  .selects > * > label {
+    margin: 5px;
+    margin-left: 40px;
+  }
+
+  select { 
+    width: 80px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+

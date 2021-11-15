@@ -2,19 +2,23 @@
 const express = require("express");
 const passport = require('passport');
 const {authUser, authRole, checkNotAuthenticated, 
-    checkAuthenticated} = require('../controllers/auth')
+    checkAuthenticated} = require('../controllers/auth');
+const { getClassrooms, returnClassrooms } = require("../controllers/classrooms-controller");
+const { returnRoles } = require("../controllers/roles-controller");
 
 
 // Import User Controller
 const { createUser, deleteUser, getUserById,
-    getUsers, updateUser } = require
+    getUsers, returnUsers, updateUser } = require
     ("../controllers/users-controller.js");
  
  // Init express router
 const routerUser = express.Router();
 
-routerUser.get('/register', checkNotAuthenticated, (req, res) => {
-    res.render('register.ejs')
+routerUser.get('/register', checkAuthenticated, async (req, res) => {
+    let classrooms = await returnClassrooms();
+    let roles = await returnRoles();
+    res.render('register.ejs', { classrooms, roles });
  }) 
 
 routerUser.get('/login', checkNotAuthenticated, (req, res) => {
@@ -33,8 +37,10 @@ routerUser.get('/users', checkAuthenticated,
 authRole(2), async (req, 
 res, next) => {
     try {
-        let users = await getUsers();
-        res.render('../views/index.ejs', { users });
+        let users = await returnUsers();
+        let classrooms = await returnClassrooms()
+        let roles = await returnRoles();
+        res.render('../views/users.ejs', { users, classrooms, roles });
     } catch (e) {
         next(e);
     }
