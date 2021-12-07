@@ -14,7 +14,7 @@ make it more interesting. For the record, this is a student project with the onl
 
 ## Documentation
 
-
+* [Database design documentation](/documentation/database_design.md)
 
 ## Getting Started
 
