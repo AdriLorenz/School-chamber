@@ -14,7 +14,10 @@ make it more interesting. For the record, this is a student project with the onl
 
 ## Technologies used
 
+Due to the nature of the project, it need to clear things: a server and the game app. For the server It uses **NodeJs with Sequelize as its ORM**. The administration 
+page linked directly to the server uses .**EJS**
 
+As for the game, It uses **Unity** because its a game engine easy to use but also very powerfull.
 
 ## Documentation
 
@@ -41,6 +44,7 @@ To play the game you need at the bare minimum:
 
 For the server need a working environment with:
 * [Git](https://git-scm.com) - You can install it from https://git-scm.com/downloads.
+* [MySQL](https://www.mysql.com/)
 * [NodeJs](https://nodejs.org/es/)
 
 ## General installation instructions
