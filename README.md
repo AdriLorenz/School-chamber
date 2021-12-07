@@ -15,12 +15,14 @@ make it more interesting. For the record, this is a student project with the onl
 ## Documentation
 
 * [Database design documentation](/documentation/database_design.md)
+* [Use cases diagram](/documentation/use-cases.png)
+* [Administration page mockup](/documentation/mockup-schoolChamber-AdministrationPage.xd) - you must download it.
 
 ## Getting Started
 
 Download links:
 
-From Github: https://github.com/ShundytheFox/VRWorld.git
+From Github: https://github.com/ShundytheFox/School-chamber.git
 
 ## Prerequisites
 
@@ -37,7 +39,7 @@ For the server need a working environment with:
 * [Git](https://git-scm.com) - You can install it from https://git-scm.com/downloads.
 * [NodeJs](https://nodejs.org/es/)
 
-## General Installation instructions
+## General installation instructions
 
 The best option to start with this project is cloning it in your PC:
 
