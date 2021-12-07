@@ -10,18 +10,11 @@ insert new questions, edit the questions and delete questions, including its ans
 There is also a ranking system, but it isn't implemented yet. The idea of the project is to learn while playing a VR videogame, using mechanics common in VR to 
 make it more interesting. For the record, this is a student project with the only idea to learn on how to made a fullstack app. This project was assigned by **Aiju**.
 
-## Database design
+![Create Project](/documentation/aiju.jpg)
 
-![Create Project](/server/database/relational-diagram.png)
+## Documentation
 
-For the database design I created two differents diagram. The first one is the upper image. There you can see how I designed the main part of the game (the quiz with the
-questions and its answers) and how it is divided (by topics inside themes).
 
-![Create Project](/server/database/users_permissions_diagram.png)
-
-The second one it's a diagram that shows the design for the users and its roles. It is mainly for the administration page.
-
-For more diagrams you can check [here](/server/database).
 
 ## Getting Started
 
@@ -31,7 +24,7 @@ From Github: https://github.com/ShundytheFox/VRWorld.git
 
 ## Prerequisites
 
-To play the game you need:
+To play the game you need at the bare minimum:
 * [Unity](https://unity.com/es) - version 2020.3
 18
 * [Oculus Quest 2](https://www.oculus.com/quest-2/?locale=es_ES)
