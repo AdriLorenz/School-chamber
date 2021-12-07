@@ -10,28 +10,32 @@ insert new questions, edit the questions and delete questions, including its ans
 There is also a ranking system, but it isn't implemented yet. The idea of the project is to learn while playing a VR videogame, using mechanics common in VR to 
 make it more interesting. For the record, this is a student project with the only idea to learn on how to made a fullstack app. This project was assigned by **Aiju**.
 
-## Database design
+![Create Project](/documentation/aiju.jpg)
 
-![Create Project](/server/database/relational-diagram.png)
+## Technologies used
 
-For the database design I created two differents diagram. The first one is the upper image. There you can see how I designed the main part of the game (the quiz with the
-questions and its answers) and how it is divided (by topics inside themes).
+Due to the nature of the project, it need to clear things: a server and the game app. For the server It uses **NodeJs with Sequelize as its ORM**. The administration 
+page linked directly to the server uses .**EJS**
 
-![Create Project](/server/database/users_permissions_diagram.png)
+As for the game, It uses **Unity** because its a game engine easy to use but also very powerfull.
 
-The second one it's a diagram that shows the design for the users and its roles. It is mainly for the administration page.
+## Documentation
 
-For more diagrams you can check [here](/server/database).
+* [Database design documentation](/documentation/database_design.md)
+* [Use cases diagram](/documentation/use-cases.png)
+* [Administration page mockup](/documentation/mockup-schoolChamber-AdministrationPage.xd) - you must download it.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/17847912-89e3d135-34f1-437f-8d36-5859995b7e81?action=collection%2Ffork&collection-url=entityId%3D17847912-89e3d135-34f1-437f-8d36-5859995b7e81%26entityType%3Dcollection)
 
 ## Getting Started
 
 Download links:
 
-From Github: https://github.com/ShundytheFox/VRWorld.git
+From Github: https://github.com/ShundytheFox/School-chamber.git
 
 ## Prerequisites
 
-To play the game you need:
+To play the game you need at the bare minimum:
 * [Unity](https://unity.com/es) - version 2020.3
 18
 * [Oculus Quest 2](https://www.oculus.com/quest-2/?locale=es_ES)
@@ -42,9 +46,10 @@ To play the game you need:
 
 For the server need a working environment with:
 * [Git](https://git-scm.com) - You can install it from https://git-scm.com/downloads.
+* [MySQL](https://www.mysql.com/)
 * [NodeJs](https://nodejs.org/es/)
 
-## General Installation instructions
+## General installation instructions
 
 The best option to start with this project is cloning it in your PC:
 
@@ -61,16 +66,27 @@ Once you have cloned the project install all dependencies.
 ```
 cd school-chamber/server
 npm install
-
-Install the NodeJs dependencies
 ```
-And where everything is installed...
+
+When everything is installed, you should go to /server/config/database and change "root" and "adri123" for the user and password of your MySQL. You must use
+the database scripts located inside the database folder.
+
+```
+const db = new Sequelize
+('school_chamber', 'root', 'adri123', {
+    host: 'localhost',
+    dialect: 'mysql'
+});
+```
+
+After that, you should be able to run correctly the server.
 
 ```
 Start the project in Visual Studio Code
 
-cd school-chamber
+cd UQuiz/server
 npm run dev
 ```
+To finish, you just must go to http://localhost:5000/login and you should be able to login.
 
 Enjoy!
