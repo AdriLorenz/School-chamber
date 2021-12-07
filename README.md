@@ -56,8 +56,6 @@ This project contains 2 different parts:
 * The game
 * The server
 
-You need Angular installed and Eclipse with Java Spring is totally recommended
-
 Once you have cloned the project install all dependencies.
 
 ```
@@ -76,11 +74,3 @@ npm run dev
 ```
 
 Enjoy!
-
-
-## Built With
-
-* [Visual Studio Code](https://code.visualstudio.com/) - The Editor used in this project for the frontend
-* [Angular](https://angular.io/) - The framework used for the frontend
-* [Spring boot](https://spring.io/projects/spring-boot) - Framework used for the backend
-* [Eclipse](https://www.eclipse.org/ide/) - The IDE used for the backend
