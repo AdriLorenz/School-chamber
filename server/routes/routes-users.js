@@ -45,6 +45,8 @@ res, next) => {
         next(e);
     }
     });
+
+routerUser.get('/user', getUsers);
 // Route get user by id
 routerUser.get('/users/:user_id', getUserById);
 // Route create a new user

@@ -4,14 +4,14 @@ const express = require("express");
 // Import Answers Controller
 const { createAnswer, deleteAnswer, 
     getAnswerById, getAnswerByQuestion, 
-    getAnswers, updateAnswer } = 
+    getAnswers, updateAnswer, returnAnswers } = 
     require("../controllers/answers-controller.js");
  
  // Init express router
 const routerAnswers = express.Router();
  
 // Route get all answers
-routerAnswers.get('/answers', getAnswers);
+routerAnswers.get('/answers', returnAnswers);
 // Route get answer by id
 routerAnswers.get('/answers/:answer_id', getAnswerById);
 // Route get answer by theme

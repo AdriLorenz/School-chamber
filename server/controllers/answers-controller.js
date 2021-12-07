@@ -11,6 +11,17 @@ exports.getAnswers = async (req, res) => {
         return answer;
     } catch (err) {
         console.log(err);
+    }
+}
+
+exports.returnAnswers = async (req, res) => {
+    try {
+        const answer = await Answer.findAll({
+            include:[{model: Question, required:true}]
+        });
+        res.send(answer);
+    } catch (err) {
+        console.log(err);
         
     }
 }

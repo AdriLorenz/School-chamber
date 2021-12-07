@@ -10,14 +10,15 @@ const {authUser, authRole, checkNotAuthenticated,
 const { createQuestion, deleteQuestion, 
     getQuestionById, getQuestionByTheme, 
     getQuestions, returnQuestions,
-     updateQuestion, createQuestionAndAnswers } = require
+     updateQuestion, createQuestionAndAnswers, 
+     updateQuestionAndAnswers } = require
     ("../controllers/questions-controller.js");
 const { returnTopics } = require("../controllers/topics-controller.js");
 
  // Init express router
 const routerQuestions = express.Router();
 
-routerQuestions.get('/questions/unity', getQuestions);
+routerQuestions.get('/questions/data', getQuestions);
  
 // Route get all questions
 routerQuestions.get('/questions', checkAuthenticated, 
@@ -76,8 +77,10 @@ routerQuestions.get('/questions/theme/:theme_id_fk', getQuestionByTheme);
 
 // Route create a new question
 routerQuestions.post('/questions', createQuestionAndAnswers);
+routerQuestions.post('/questions/data', createQuestion);
 // Route update question by id
-routerQuestions.put('/questions/edit/:question_id', updateQuestion);
+routerQuestions.put('/questions/edit/:question_id', updateQuestionAndAnswers);
+routerQuestions.put('/questions/data/:question_id', updateQuestion);
 // Route delete question by id
 routerQuestions.delete('/questions/:question_id', deleteQuestion);
  

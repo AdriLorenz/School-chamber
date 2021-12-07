@@ -38,7 +38,7 @@ exports.getQuestionById = async (req, res) => {
             where: {
                 question_id: req.params.question_id
             }, 
-            include:[{model: Theme, required:true}]
+            include:[{model: Topic, required:true}]
         });
         res.send(question[0]);
     } catch (err) {
@@ -112,8 +112,8 @@ exports.createQuestionAndAnswers = async (req, res) => {
     }
 }
  
-// Update question by id
-exports.updateQuestion = async (req, res) => {
+// Update question and answers by id
+exports.updateQuestionAndAnswers = async (req, res) => {
     try {
         await Question.update(req.body, {
             where: {
@@ -165,6 +165,21 @@ exports.updateQuestion = async (req, res) => {
             }
         });
         res.redirect('/questions');
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+exports.updateQuestion = async (req, res) => {
+    try {
+        await Question.update(req.body, {
+            where: {
+                question_id: req.params.question_id
+            }
+        });
+        res.json({
+            "message": "Question Updated"
+        });
     } catch (err) {
         console.log(err);
     }
