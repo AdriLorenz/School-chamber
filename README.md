@@ -12,6 +12,10 @@ make it more interesting. For the record, this is a student project with the onl
 
 ![Create Project](/documentation/aiju.jpg)
 
+## Technologies used
+
+
+
 ## Documentation
 
 * [Database design documentation](/documentation/database_design.md)
@@ -56,16 +60,27 @@ Once you have cloned the project install all dependencies.
 ```
 cd school-chamber/server
 npm install
-
-Install the NodeJs dependencies
 ```
-And where everything is installed...
+
+When everything is installed, you should go to /server/config/database and change "root" and "adri123" for the user and password of your MySQL. You must use
+the database scripts located inside the database folder.
+
+```
+const db = new Sequelize
+('school_chamber', 'root', 'adri123', {
+    host: 'localhost',
+    dialect: 'mysql'
+});
+```
+
+After that, you should be able to run correctly the server.
 
 ```
 Start the project in Visual Studio Code
 
-cd school-chamber
+cd UQuiz/server
 npm run dev
 ```
+To finish, you just must go to http://localhost:5000/login and you should be able to login.
 
 Enjoy!
