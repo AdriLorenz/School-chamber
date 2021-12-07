@@ -7,8 +7,8 @@ There are a total of 5 chambers.
 The questions are storaged inside a server with its own database. Along with that, there is also an administration page where the teachers can see the active questions,
 insert new questions, edit the questions and delete questions, including its answers. There the teachers can also register new users for the game.
 
-There is also a ranking system, but it isn't implemented yet. The idea of the proyect is to learn while playing a VR videogame, using mechanics common in VR to 
-make it more interesting. For the record, this is a student proyect with the only idea to learn on how to made a fullstack app. This proyect was assigned by **Aiju**.
+There is also a ranking system, but it isn't implemented yet. The idea of the project is to learn while playing a VR videogame, using mechanics common in VR to 
+make it more interesting. For the record, this is a student project with the only idea to learn on how to made a fullstack app. This project was assigned by **Aiju**.
 
 ## Database design
 
@@ -31,65 +31,48 @@ From Github: https://github.com/ShundytheFox/VRWorld.git
 
 ## Prerequisites
 
-You need a working environment with:
+To play the game you need:
+* [Unity](https://unity.com/es) - version 2020.3
+18
+* [Oculus Quest 2](https://www.oculus.com/quest-2/?locale=es_ES)
+* [Oculus Link](https://www.oculus.com/accessories/oculus-link/?locale=es_ES) - It must be connected to your PC.
+* GTX 1660
+* Ryzen 5 3400
+* 16 GB of RAM
+
+For the server need a working environment with:
 * [Git](https://git-scm.com) - You can install it from https://git-scm.com/downloads.
-* [MySQL](https://www.mysql.com) - You can install it from https://www.mysql.com/downloads/.
-* [Angular](https://angular.io/)
-* [Spring boot](https://spring.io/projects/spring-boot)
+* [NodeJs](https://nodejs.org/es/)
 
 ## General Installation instructions
 
 The best option to start with this project is cloning it in your PC:
 
 ```
-git clone https://github.com/ShundytheFox/VRWorld.git
+git clone https://github.com/ShundytheFox/School-chamber.git
 ```
 
 This project contains 2 different parts:
-* Frontend
-* Backend
+* The game
+* The server
 
 You need Angular installed and Eclipse with Java Spring is totally recommended
 
 Once you have cloned the project install all dependencies.
 
 ```
-cd VRWorld/frontend
+cd school-chamber/server
 npm install
 
-Install Maven dependencies in Eclipse for the backend.
+Install the NodeJs dependencies
 ```
-
-* For your backend part:
-
-2. You need a mysql server working.
-
-3. Create the mysql database, that in our case is "db_vr". You can import it from the file db_vr.sql included in this project. https://github.com/ShundytheFox/VRWorld/blob/master/backend/database/db_vr.sql
-
-4. I have also included the scripts for MySQL in case you want to see it.
-
-Here you can see the MySQL connection:
+And where everything is installed...
 
 ```
-spring.datasource.url=jdbc:mysql://localhost/db_vr?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-spring.datasource.username=root
-spring.datasource.password=adri123
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
-spring.jpa.hibernate.ddl-auto= none
-logging.level.org.hibernate.SQL=debug
-````
+Start the project in Visual Studio Code
 
-For the backend it use de 8080 ports, and the for the frontend it use the 4200 port
-
-
-Finally to start enjoying this project.
-
-```
-Start Spring Boot in Eclipse to run the backend
-
-cd VRWorld/frontend
-ng serve
+cd school-chamber
+npm run dev
 ```
 
 Enjoy!
