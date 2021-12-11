@@ -15,6 +15,12 @@ public class HandManager : MonoBehaviour
         _handAnimator = GetComponent<Animator>();
     }
 
+    private void OnDestroy()
+{
+        controllerActionGrip.action.performed -= GripPress;
+        controllerActionTrigger.action.performed -= TriggerPress;
+}
+
     private void GripPress(InputAction.CallbackContext obj) {
         _handAnimator.SetFloat("Grip", obj.ReadValue<float>());
     }
