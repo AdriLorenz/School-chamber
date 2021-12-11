@@ -23,6 +23,7 @@ As for the game, It uses **Unity** because its a game engine easy to use but als
 
 * [Database design documentation](/documentation/database_design.md)
 * [Use cases diagram](/documentation/Diagrams/use-cases.png)
+* [User requirements](/documentation/user_requirements.md)
 * [Administration page mockup](/documentation/Mockup/mockup-schoolChamber-AdministrationPage.xd) - you must download it.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/17847912-89e3d135-34f1-437f-8d36-5859995b7e81?action=collection%2Ffork&collection-url=entityId%3D17847912-89e3d135-34f1-437f-8d36-5859995b7e81%26entityType%3Dcollection)
