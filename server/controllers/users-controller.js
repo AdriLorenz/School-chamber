@@ -57,10 +57,7 @@ exports.createUser = async (req, res) => {
                 const user = await User.findAll({
                     where: {
                         user_email: req.body.email
-                    },
-        
-                    include: [{ model: Role, required: true }]
-        
+                    }
                 });
                 return user[0].dataValues.user_email;
             } catch (err) {
@@ -71,16 +68,16 @@ exports.createUser = async (req, res) => {
         console.log(email);
         if (req.body.email === email) {
             req.flash('error', 'The email already exists');
-            res.render('../views/register.ejs');
+            return res.redirect("/register")
         } else if (req.body.repeatPassword !== req.body.password) {
             req.flash('error', 'The passwords do not match');
-            res.render('../views/register.ejs');
+            return res.redirect("/register")
         } else {
             User.create({
                 user_name: req.body.name,
                 user_email: req.body.email,
                 user_password: hashedPassword,
-                role_id_fk: req.body.role_id_fk,
+                role_id_fk: 1,
                 classroom_id_fk: req.body.classroom_id_fk
             });
             res.redirect('/users')

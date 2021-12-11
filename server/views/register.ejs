@@ -31,7 +31,7 @@
             </select>
           </div>
 
-          <div class="roles">
+          <div class="classroom">
             <label for="classroom_id_fk">Classroom</label>
             <select name="classroom_id_fk" id="classroom_id_fk">
               <% for ( let classroom of classrooms ) { %>
@@ -40,14 +40,20 @@
             </select>
           </div>
         </div>
-
+        <br>
+        <br>
         <% if (messages.error) { %>
-            <%= messages.error %>
+            <p style="color:#FF0000">*<%= messages.error %></p>
             <% } %>
-    
-        <div class="buttons">
-            <input class="registerButton" type="submit" value="Submit">
-        </div>
-      </form>
+      <div class="buttons">
+        <input class="registerButton" type="submit" value="Submit">
+
+    </form>
+
+
+        <a href="/users">
+          <input class="backButton" type="button" value="Back" />
+        </a>
+    </div>
 
 </div>
