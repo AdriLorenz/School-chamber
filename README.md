@@ -94,4 +94,6 @@ To login in the administration page, you just must go to http://localhost:5000/l
 
 As for the game, it is still in development, so the easiest way to test it in its current stage is to add it in the Unity Hub and play it inside the Unity Editor.
 
+<img src="/documentation/Images/AddToUnity.PNG" width="700" height="350">
+
 Enjoy!
