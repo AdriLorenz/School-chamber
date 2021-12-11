@@ -32,7 +32,7 @@ If you click on the 'Edit' button you will open a new page to edit the existing 
 
 If you click in 'Users' inside the navigation bar in the upper part of the page, you can see the users registered in the app.
 
-<img src="/documentation/Images/UsersPage.PNG" width="1000" height="600">
+<img src="/documentation/Images/UsersPage.PNG" width="1200" height="600">
 
 There you can also register new users if you click on 'Register User' button
 
