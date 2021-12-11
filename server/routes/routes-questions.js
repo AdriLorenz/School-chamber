@@ -62,7 +62,8 @@ routerQuestions.get('/questions/edit/:question_id', checkAuthenticated,
 authRole(2), async (req, res) => {
     const question = req.params.question_id
     let themes = await returnThemes();
-    res.render('../views/edit-question.ejs', {question_id: question, themes})
+    let topics = await returnTopics();
+    res.render('../views/edit-question.ejs', {question_id: question, themes, topics})
 });
 
 routerQuestions.delete('/logout', (req, res) => {
