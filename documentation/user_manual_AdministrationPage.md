@@ -26,13 +26,13 @@ When you are finished, click on the 'Create Question' button. It will redirect y
 
 If you click on the 'Edit' button you will open a new page to edit the existing question.
 
-<img src="/documentation/Images/EditQuestion.PNG" width="900" height="500">
+<img src="/documentation/Images/EditQuestion.PNG" width="1000" height="500">
 
 ## Users page
 
 If you click in 'Users' inside the navigation bar in the upper part of the page, you can see the users registered in the app.
 
-<img src="/documentation/Images/UsersPage.PNG" width="1100" height="600">
+<img src="/documentation/Images/UsersPage.PNG" width="1000" height="600">
 
 There you can also register new users if you click on 'Register User' button
 
