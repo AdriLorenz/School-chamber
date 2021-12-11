@@ -90,6 +90,8 @@ Start the project in Visual Studio Code
 cd UQuiz/server
 npm run dev
 ```
-To finish, you just must go to http://localhost:5000/login and you should be able to login.
+To login in the administration page, you just must go to http://localhost:5000/login and you should be able to login.
+
+As for the game, it is still in development, so the easiest way to test it in its current stage is to add it in the Unity Hub and play it inside the Unity Editor.
 
 Enjoy!
