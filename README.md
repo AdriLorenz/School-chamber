@@ -26,6 +26,7 @@ As for the game, It uses **Unity** because its a game engine easy to use but als
 * [User requirements](/documentation/user_requirements.md)
 * [Administration page users manual](/documentation/user_manual_AdministrationPage.md)
 * [Game users manual](/documentation/user_manual_Game.md)
+* [Usability documentation](/documentation/usability.md)
 * [Administration page mockup](/documentation/Mockup/mockup-schoolChamber-AdministrationPage.xd) - you must download it.
 * [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/17847912-89e3d135-34f1-437f-8d36-5859995b7e81?action=collection%2Ffork&collection-url=entityId%3D17847912-89e3d135-34f1-437f-8d36-5859995b7e81%26entityType%3Dcollection) - Backend connections through Postman.
 
@@ -97,3 +98,14 @@ As for the game, it is still in development, so the easiest way to test it in it
 <img src="/documentation/Images/AddToUnity.PNG" width="700" height="350">
 
 Enjoy!
+
+## Workflow
+
+You can follow the development of the project really close here:
+
+* [Trello](https://trello.com/b/Clemo77M/uquiz) 
+
+The project started with the server and the administration page. There is work to be done there yet, but when it was solid enough, all the development power went to Unity
+and the production of the game itself.
+
+In the Trello you can see all the things that are actually in development and its actual stage. 
